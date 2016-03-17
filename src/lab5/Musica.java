@@ -7,10 +7,7 @@ public class Musica {
 	private String genero;
 	
 	public Musica(String titulo, int duracao, String genero) throws Exception{
-		this.titulo = titulo;
-		this.duracao = duracao;
-		this.genero = genero;
-		
+	
 		if(titulo == null || titulo.equals("")){
 			throw new Exception("Titulo da musica nao pode ser nulo ou vazio.");
 		}
@@ -19,7 +16,11 @@ public class Musica {
 		}
 		if(genero == null || genero.equals("")){
 			throw new Exception("Genero da musica nao pode ser nulo ou vazio.");
+			
 		}
+		this.titulo = titulo;
+		this.duracao = duracao;
+		this.genero = genero;
 	}
 	
 	

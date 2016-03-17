@@ -1,6 +1,8 @@
 package lab5;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Musiteca {
 	
@@ -8,16 +10,20 @@ public class Musiteca {
 	private Album album;
 	private ArrayList<Album> albuns;
 	private Playlist playlist;
-	private ArrayList<Playlist> playlists;
+	private Map<String, Playlist> playlists;
 	
 	public Musiteca(){
 		this.musica = musica;
 		this.album = album;
 		this.albuns = new ArrayList<Album>();
 		this.playlist = playlist;
-		this.playlists = new ArrayList<Playlist>();
+		this.playlists = new HashMap<String, Playlist>();
 	}
 
+	
+	
+	
+	
 	
 	
 	

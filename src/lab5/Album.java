@@ -32,12 +32,11 @@ public class Album {
 	}
 	
 	public boolean adicionaMusica(Musica musica) throws Exception{
-		if(musica.equals(null)){
-			return false;
-		}else{
-			musicas.add(musica);
-			return true;
+		if(musica == null){
+			throw new Exception("A musica nao pode ser nula");
 		}
+		musicas.add(musica);
+		return true;
 
 	}
 	

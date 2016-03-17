@@ -1,70 +1,65 @@
 package lab5;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Playlist {
 
 	private String nome;
-	private HashMap<String, Musica > musicas;
+	//nao precisar ser mapa
+	private Set<Musica> musicas;
 	
 	//FALTA EXCEPTIONS
-	public Playlist(String nome){
+	public Playlist(String nome) throws Exception{
+		if(nome == null || nome.equals("")){
+			throw new Exception("O nome da playlist nao pode ser nulo ou vazio.");
+		}
 		this.nome = nome;
-		musicas = new HashMap<String, Musica>();
+		musicas = new HashSet<Musica>();
 	}
 
 	public int getDuracaoPlayList(){
 		int duracao = 0;
-		for(int i=0; i < musicas.size(); i++){
-			duracao += musicas.get(i).getDuracao();
+		for(Musica musica: musicas){
+			duracao += musica.getDuracao();
 		}
 		
 		return duracao;
 	}
 	
-	public boolean adicionaMusica(Musica musica){
-		if(musica.equals("") || musica == null ){
-			return false;
-		}else{
-			musicas.put(nome, musica);
-			return true;
+	public boolean adicionaMusica(Musica musica) throws Exception{
+		if(musica == null){
+			throw new Exception("A musica nao pode ser nula.");
 		}
+		musicas.add(musica);
+		return true;
 	}
 	
 	public boolean removeMusicaPorNome(String nome){
-		for(int i = 0; i < musicas.size(); i++){
-			if(musicas.get(i).equals(nome)){
-				musicas.remove(nome);
+		for(Musica musica : musicas){
+			if(musica.equals(nome)){
+				musicas.remove(musica);
 				return true;
-			}else{
-				return false;
 			}
 		}return false;
 	}
 	
 	public boolean removeMusicaPorObjeto(Musica musica){
-		for(int i = 0; i < musicas.size();i++){
-			if(musicas.containsKey(musica)){
-				musicas.remove(musica);
-				//musicas.remove(i, musica); #java8
-				return true;
-			}else{
-				return false;
-			}
+		if(musicas.contains(musica)){
+			musicas.remove(musica);
+			return true;
 		}return false;
 	}
 	
 	public boolean pesquisaMusica(String nome){
-		for(int i = 0; i < musicas.size(); i++){
-			if(musicas.get(i).equals(nome)){
-				return true;
-			}else{
-				return false;
-			}
+		for(Musica musica : musicas){
+			musica.getTitulo().equals(nome);
+			return true;
 		}return false;
 	}
 		
-	public String getNome() {
+	public String getNome(){
 		return nome;
 	}
 

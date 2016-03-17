@@ -44,8 +44,9 @@ public class Playlist {
 	
 	public boolean removeMusicaPorObjeto(Musica musica){
 		for(int i = 0; i < musicas.size();i++){
-			if(musicas.get(i).equals(musica)){
-				musicas.remove(i, musica);
+			if(musicas.containsKey(musica)){
+				musicas.remove(musica);
+				//musicas.remove(i, musica); #java8
 				return true;
 			}else{
 				return false;

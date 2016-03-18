@@ -56,17 +56,10 @@ public class Album {
 				return false;
 			}
 		}
-		/*for (int i = 0; i < musicas.size(); i++){
-			if (musicas.get(i).getTitulo().equals(nome)){
-				musicas.set(i, null);
-				return true;
-			}else{
-				return false;
-			}
-		}
-		return false; */
 		return false;		
 	}
+	
+	
 	
 	public boolean getMusicaPorNome(String nome){
 		for (Musica musica : musicas){

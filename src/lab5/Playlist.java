@@ -7,7 +7,6 @@ import java.util.Set;
 public class Playlist {
 
 	private String nome;
-	//nao precisar ser mapa
 	private Set<Musica> musicas;
 	
 	//FALTA EXCEPTIONS
@@ -27,6 +26,9 @@ public class Playlist {
 		
 		return duracao;
 	}
+	
+	
+
 	
 	public boolean adicionaMusica(Musica musica) throws Exception{
 		if(musica == null){

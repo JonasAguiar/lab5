@@ -10,7 +10,7 @@ public class Album {
 	private boolean favorito;
 	private ArrayList<Musica> musicas;
 	
-	//FALTA EXCEPTIONS
+	
 	public Album(String artista, String titulo, int anoDeLancamento, boolean favorito) throws Exception{
 		this.artista = artista;
 		this.titulo = titulo;
@@ -43,6 +43,7 @@ public class Album {
 	public int getDuracaoAlbum(){
 		int tempoTotal = 0;
 		for (Musica musica : musicas){
+			
 			tempoTotal += musica.getDuracao();
 		}return tempoTotal;
 	}
@@ -74,6 +75,14 @@ public class Album {
 	public Musica getMusicaPorIndice(int index) throws Exception{
 		return musicas.get(index - 1);
 	}
+	
+	public Musica getMusica(){
+		for(Musica musica : musicas){
+			return musica;
+		}
+		return null;
+	}
+	
 	
 	public String getArtista() {
 		return artista;

@@ -7,9 +7,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.junit.Test;
 
 public class Musiteca {
-
+	
+	private Album album;
 	private List<Album> albuns;
 	private Map<String, Playlist> playlists;
 	private Set<Album> favoritos;
@@ -20,6 +22,23 @@ public class Musiteca {
 		this.favoritos = new HashSet<Album>();
 	}
 
+	public boolean adicionaAlbum(Album album){
+		if(!albuns.contains(album)){
+			albuns.add(album);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean removeAlbum(Album album){
+		if(albuns.contains(album)){
+			albuns.remove(album);
+			return true;
+		}return false;
+	}
+	
+
+	
 	
 	public Musica obtemMusicaPorIndice(String nomeAlbum, int i) throws Exception{
 		verificaNome(nomeAlbum);
@@ -92,4 +111,77 @@ public class Musiteca {
 			throw new Exception("Nao pode passar titulo vazio ou nulo.");
 		}
 	}
+	
+	public int getDuracaoPlaylist(String nome) throws Exception{
+		if(playlists.containsKey(nome)){
+			return getPlaylist(nome).getDuracaoPlayList();
+			
+		}return 0;
+					
+	}
+	
+	
+	
+	public boolean adicionaFavorito(String nome){
+		for(Album album: albuns){
+			if(album.getTitulo().equals(nome)){
+				album.setFavorito(true);
+				favoritos.add(album);
+				return true;
+				}
+			
+		}return false;
+	}
+	
+	public boolean removeFavorito(String nome){
+		for(Album album : favoritos){
+			if(album.getTitulo().equals(nome)){
+				if(!album.isFavorito()){
+					album.setFavorito(false);
+					favoritos.remove(album);
+					return true;
+				}
+			}
+		}return false;
+	}
+	
+	public boolean pesquisaFavoritoPorNome(String nome){
+		for(Album album : favoritos){
+			if(album.getTitulo().equals(nome)){
+				return true;
+			}
+		}return false;
+	}
+	
+	public boolean pesquisaFavoritoPorObjeto(Album album){
+		if(favoritos.contains(album)){
+			return true;
+		}return false;
+	}
+	
+	public boolean getMusicaPorNome(String nome){
+		return album.getMusicaPorNome(nome);
+	}
+	
+	public boolean removeMusica(String nome){
+		return album.removeMusica(nome);
+	}
+	
+	public int getDuracaoAlbum(String nome){
+		for(Album album : albuns){
+			if(album.getTitulo().equals(nome)){
+				return album.getDuracaoAlbum();
+			}
+		}
+		return 0;
+	}
+	
+	public boolean adicionaMusica(Musica musica) throws Exception{
+		return album.adicionaMusica(musica);
+	}
+	
+	
+	
+	
+	
 }

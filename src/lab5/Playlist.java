@@ -1,6 +1,6 @@
 package lab5;
 
-import java.util.HashMap;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +9,6 @@ public class Playlist {
 	private String nome;
 	private Set<Musica> musicas;
 	
-	//FALTA EXCEPTIONS
 	public Playlist(String nome) throws Exception{
 		if(nome == null || nome.equals("")){
 			throw new Exception("O nome da playlist nao pode ser nulo ou vazio.");
@@ -52,6 +51,13 @@ public class Playlist {
 			musicas.remove(musica);
 			return true;
 		}return false;
+	}
+	
+	public Musica retornaMusica(){
+		for(Musica musica : musicas){
+			return musica;
+		}
+		return null;
 	}
 	
 	public boolean pesquisaMusica(String nome){
@@ -98,6 +104,11 @@ public class Playlist {
 		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Playlist [nome=" + nome + ", musicas=" + musicas + "]";
 	}
 	
 	
